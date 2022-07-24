@@ -1,4 +1,4 @@
-import { AmbientLight, AxesHelper, BoxBufferGeometry, GridHelper, Mesh, MeshStandardMaterial, PerspectiveCamera, Scene, Vector3, WebGLRenderer,MOUSE } from "three";
+import { AmbientLight, AxesHelper, BoxBufferGeometry, GridHelper, Mesh, MeshStandardMaterial, PerspectiveCamera, Scene, Vector3, WebGLRenderer,MOUSE, Object3D } from "three";
 import Stats from 'three/examples/jsm/libs/stats.module'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 export class TEngine {
@@ -11,7 +11,9 @@ export class TEngine {
 
   constructor (dom: HTMLElement) {
     this.dom = dom;
-    this.renderer = new WebGLRenderer();
+    this.renderer = new WebGLRenderer({
+      antialias: true
+    });
     this.scene = new Scene();
     this.camera = new PerspectiveCamera(45, dom.offsetWidth / dom.offsetHeight, 1, 1000);
 
@@ -21,21 +23,16 @@ export class TEngine {
 
     this.renderer.setSize(dom.offsetWidth,dom.offsetHeight,true);
 
-    const box: Mesh = new Mesh(
-      new BoxBufferGeometry(10,10,10),
-      new MeshStandardMaterial({color: 'rgba(255,0,0)'})
-    )
 
-    const ambientLight: AmbientLight = new AmbientLight('rgba(255,255,255',1);
+    const ambientLight: AmbientLight = new AmbientLight('rgb(255,255,255)',1);
 
     const axesHelper: AxesHelper = new AxesHelper(500);
-    const gridHelper: GridHelper = new GridHelper(500,20,'rgba(200,200,200)','rgba(100,100,100)');
+    const gridHelper: GridHelper = new GridHelper(500,20,'rgb(200,200,200)','rgb(100,100,100)');
 
-    this.scene.add(box);
     this.scene.add(ambientLight);
     this.scene.add(axesHelper);
     this.scene.add(gridHelper);
-    // this.renderer.setClearColor('rgba(255,255,255)');
+    // this.renderer.setClearColor('rgb(255,255,255)');
     // this.renderer.clearColor();
 
     // 初始性能监视器
@@ -52,7 +49,6 @@ export class TEngine {
 
     const renderFunc = () => {
       // box.position.x += 0.01;
-      box.rotateY(0.01);
       orbitControls.update();
       this.renderer.render(this.scene, this.camera);
       stats.update();
@@ -62,5 +58,11 @@ export class TEngine {
     dom.appendChild(this.renderer.domElement);
     dom.appendChild(statsDom);
 
+  }
+
+  addObject(...object: Object3D[]) {
+    object.forEach(elem => {
+      this.scene.add(elem)
+    })
   }
 }

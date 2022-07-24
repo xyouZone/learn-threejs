@@ -3,13 +3,14 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import { TEngine } from './assets/ts/TEngine';
 import { defineComponent,onMounted,ref } from 'vue';
+import { basicObjectList } from './assets/ts/TBasicObject'
 
 export default defineComponent({
   setup() {
     const threeTarget = ref(null);
     onMounted(() => {
       const TE = new TEngine(threeTarget.value!);
-
+      TE.addObject(...basicObjectList);
     })
 
     return {
