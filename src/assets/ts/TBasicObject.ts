@@ -2,22 +2,19 @@ import {Mesh,BoxBufferGeometry,MeshStandardMaterial, SphereBufferGeometry, Cylin
 
 export const basicObjectList: Object3D[] = []
 
-export const box: Mesh = new Mesh(
-  new BoxBufferGeometry(10,10,10),
-  new MeshStandardMaterial({color: 'rgb(255,0,0)'})
+// 地面
+const stage: Mesh = new Mesh(
+  new BoxBufferGeometry(200,10,200),
+  new MeshStandardMaterial({color: 'rgb(150,150,150)'})
 )
-box.position.x = -10;
 
-export const sphere: Mesh = new Mesh(
-  new SphereBufferGeometry(5),
-  new MeshStandardMaterial()
+stage.position.y = -5;
+
+// 立方体
+const box: Mesh = new Mesh(
+  new BoxBufferGeometry(20,20,20),
+  new MeshStandardMaterial({color: 'red'})
 )
-sphere.position.x = 10;
+box.position.y = 10;
 
-export const cylinder: Mesh = new Mesh(
-  new CylinderBufferGeometry(5,5,10,32,5),
-  new MeshStandardMaterial()
-)
-cylinder.position.z = 10;
-
-basicObjectList.push(box,sphere,cylinder);
+basicObjectList.push(stage,box);
