@@ -5,7 +5,8 @@ import { TEngine } from './assets/ts/TEngine';
 import { defineComponent,onMounted,ref } from 'vue';
 import { basicObjectList } from './assets/ts/TBasicObject'
 // import { TCanvasTextureEditor } from './assets/ts/TCanvasTextureEdit'
-import { LightsList } from './assets/ts/TLights'
+import { lightsList } from './assets/ts/TLights'
+import { helperList } from './assets/ts/THelper'
 
 export default defineComponent({
   setup() {
@@ -13,7 +14,8 @@ export default defineComponent({
     onMounted(() => {
       const TE = new TEngine(threeTarget.value!);
       TE.addObject(...basicObjectList);
-      TE.addObject(...LightsList);
+      TE.addObject(...lightsList);
+      TE.addObject(...helperList);
     })
 
     return {

@@ -14,6 +14,8 @@ export class TEngine {
     this.renderer = new WebGLRenderer({
       antialias: true
     });
+    // 开启渲染器阴影渲染
+    this.renderer.shadowMap.enabled = true;
     this.scene = new Scene();
     this.camera = new PerspectiveCamera(45, dom.offsetWidth / dom.offsetHeight, 1, 1000);
 
@@ -23,11 +25,6 @@ export class TEngine {
 
     this.renderer.setSize(dom.offsetWidth,dom.offsetHeight,true);
 
-    const axesHelper: AxesHelper = new AxesHelper(500);
-    const gridHelper: GridHelper = new GridHelper(500,20,'rgb(200,200,200)','rgb(100,100,100)');
-
-    this.scene.add(axesHelper);
-    this.scene.add(gridHelper);
     // this.renderer.setClearColor('rgb(255,255,255)');
     // this.renderer.clearColor();
 
