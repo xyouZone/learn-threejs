@@ -8,4 +8,4 @@ const gridHelper: GridHelper = new GridHelper(500,20,'rgb(200,200,200)','rgb(100
 const pointLightHelper: PointLightHelper = new PointLightHelper(pointLight,pointLight.distance,pointLight.color);
 const spotLightHelper: SpotLightHelper = new SpotLightHelper(spotLight,spotLight.color);
 
-helperList.push(axesHelper,gridHelper,pointLightHelper,spotLightHelper);
+helperList.push(axesHelper,pointLightHelper,spotLightHelper);
