@@ -7,6 +7,7 @@ import { basicObjectList } from './assets/ts/TBasicObject'
 // import { TCanvasTextureEditor } from './assets/ts/TCanvasTextureEdit'
 import { lightsList } from './assets/ts/TLights'
 import { helperList } from './assets/ts/THelper'
+import { codeModelList } from './assets/ts/TCodeModel';
 
 export default defineComponent({
   setup() {
@@ -16,6 +17,7 @@ export default defineComponent({
       TE.addObject(...basicObjectList);
       TE.addObject(...lightsList);
       TE.addObject(...helperList);
+      TE.addObject(...codeModelList);
     })
 
     return {
