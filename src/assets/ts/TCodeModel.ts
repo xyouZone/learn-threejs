@@ -6,50 +6,124 @@ export const codeModelList: Object3D[] = [];
 
 const size: number = 10;
 const points: Float32Array = new Float32Array([
-  -size,size,size,
-  size,size,size,
-  size,size,-size,
-  -size,size,-size,
+  -size, size, size,
+  size, size, size,
+  size, size, -size,
+  -size, size, -size,
 
-  -size,-size,size,
-  size,-size,size,
-  size,-size,-size,
-  -size,-size,-size,
-]);
+  -size, -size, size,
+  size, -size, size,
+  size, -size, -size,
+  -size, -size, -size,
+
+  -size, size, size,
+  -size, size, -size,
+  -size, -size, -size,
+  -size, -size, size,
+
+  size, size, size,
+  size, size, -size,
+  size, -size, -size,
+  size, -size, size,
+
+  -size, size, size,
+  size, size, size,
+  size, -size, size,
+  -size, -size, size,
+  
+
+  -size, size, -size,
+  size, size, -size,
+  size, -size, -size,
+  -size, -size, -size,
+  
+])
+
+const normals: Float32Array = new Float32Array([
+  0, 1, 0,
+  0, 1, 0,
+  0, 1, 0,
+  0, 1, 0,
+
+  0, -1, 0,
+  0, -1, 0,
+  0, -1, 0,
+  0, -1, 0,
+
+  -1, 0, 0,
+  -1, 0, 0,
+  -1, 0, 0,
+  -1, 0, 0,
+
+  1, 0, 0,
+  1, 0, 0,
+  1, 0, 0,
+  1, 0, 0,
+
+  0, 0, 1,
+  0, 0, 1,
+  0, 0, 1,
+  0, 0, 1,
+
+  0, 0, -1,
+  0, 0, -1,
+  0, 0, -1,
+  0, 0, -1,
+])
 
 const index: number[] = [
-  0,1,2,
-  2,3,0,
+  0, 1, 2,
+  2, 3, 0,
 
-  0,4,5,
-  5,1,0,
+  4, 5, 6,
+  6, 7, 4,
 
-  1,5,6,
-  6,2,1,
+  8, 9, 10,
+  10, 11, 8,
 
-  2,6,7,
-  7,3,2,
+  12, 14, 13,
+  14, 12, 15,
 
-  0,7,4,
-  0,3,7,
+  16, 18, 17,
+  18, 16, 19,
 
-  4,6,5,
-  7,6,4
+  20, 21, 22,
+  22, 23, 20
 ]
 const uv: Float32Array = new Float32Array([
-  0,0,
-  1,0,
-  1,1,
-  0,1,
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
 
-  0,0,
-  1,0,
-  1,1,
-  0,1
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
+
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
+
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
+
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
+
+  0, 0,
+  1, 0,
+  1, 1,
+  0, 1,
 ])
 const geometry: BufferGeometry = new BufferGeometry();
 geometry.setAttribute('position',new BufferAttribute(points, 3));
-geometry.setAttribute('normal',new BufferAttribute(points, 3));
+geometry.setAttribute('normal',new BufferAttribute(normals, 3));
 geometry.setAttribute('uv',new BufferAttribute(uv, 2));
 
 geometry.setIndex(index);
