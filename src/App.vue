@@ -8,6 +8,7 @@ import { basicObjectList } from './assets/ts/TBasicObject'
 import { lightsList } from './assets/ts/TLights'
 import { helperList } from './assets/ts/THelper'
 import { codeModelList } from './assets/ts/TCodeModel';
+import { framePromise } from './assets/ts/TLoadModel';
 
 export default defineComponent({
   setup() {
@@ -18,6 +19,14 @@ export default defineComponent({
       TE.addObject(...lightsList);
       TE.addObject(...helperList);
       TE.addObject(...codeModelList);
+
+      framePromise.then(group => {
+        group.position.y = 45;
+        group.position.z = -1;
+        group.rotation.y = Math.PI / 180 * -90;
+        group.scale.set(2,2,2);
+        TE.addObject(group);
+      })
     })
 
     return {
