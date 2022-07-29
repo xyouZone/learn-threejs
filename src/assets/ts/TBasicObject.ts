@@ -5,8 +5,7 @@ import {
   SphereBufferGeometry,
   CylinderBufferGeometry,
   Object3D,
-  PlaneBufferGeometry,
-  Color
+  PlaneBufferGeometry
 } from 'three'
 import { pictureTexture } from './TTextures';
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper'
@@ -15,7 +14,7 @@ export const basicObjectList: Object3D[] = []
 
 // 地面
 const stage: Mesh = new Mesh(
-  new BoxBufferGeometry(200,10,200),
+  new BoxBufferGeometry(600,10,400),
   new MeshStandardMaterial({
     color: 'rgb(150,150,150)',
     roughness: 0
@@ -25,19 +24,6 @@ stage.receiveShadow = true;
 stage.castShadow = true;
 stage.position.y = -5;
 
-// 立方体
-const box: Mesh = new Mesh(
-  new BoxBufferGeometry(20,20,20),
-  new MeshStandardMaterial({
-    color: 'white'
-  })
-)
-const boxNormalHelper = new VertexNormalsHelper(box,10,new Color('green').getHex());
-
-box.castShadow = true;
-box.castShadow = true;
-box.position.y = 10;
-box.position.x = 20;
 
 // 相框
 const plane: Mesh = new Mesh(
@@ -47,6 +33,18 @@ const plane: Mesh = new Mesh(
   })
 )
 plane.position.y = 45;
-plane.scale.set(0.3,0.3,0.3)
+plane.scale.set(0.3,0.3,0.3);
 
-basicObjectList.push(stage,box,plane,boxNormalHelper);
+// 墙面
+export const wall: Mesh = new Mesh(
+  new BoxBufferGeometry(600,200,10),
+  new MeshStandardMaterial({
+    color: 'white'
+  })
+);
+wall.position.y = 100;
+wall.position.z = -80;
+
+wall.updateMatrix();
+wall.updateMatrixWorld();
+basicObjectList.push(stage,wall,plane);
