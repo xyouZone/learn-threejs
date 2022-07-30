@@ -25,15 +25,16 @@ stage.castShadow = true;
 stage.position.y = -5;
 
 
-// 相框
-const plane: Mesh = new Mesh(
+// 图片
+const picture: Mesh = new Mesh(
   new PlaneBufferGeometry(192,108),
   new MeshStandardMaterial({
     map: pictureTexture
   })
 )
-plane.position.y = 45;
-plane.scale.set(0.3,0.3,0.3);
+picture.position.y = 120;
+picture.position.z = -70;
+picture.scale.set(0.3,0.3,0.3);
 
 // 墙面
 export const wall: Mesh = new Mesh(
@@ -47,4 +48,4 @@ wall.position.z = -80;
 
 wall.updateMatrix();
 wall.updateMatrixWorld();
-basicObjectList.push(stage,wall,plane);
+basicObjectList.push(stage,wall,picture);

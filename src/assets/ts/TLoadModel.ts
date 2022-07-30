@@ -35,8 +35,8 @@ export const getFrame = async function(): Promise<Mesh | null> {
       bumpMap: frameDispTexture
     })
 
-    frame.position.y = 45;
-    frame.position.z = -1;
+    frame.position.y = 120;
+    frame.position.z = -70;
     frame.rotation.y = Math.PI / 180 * -90;
     frame.scale.set(2,2,2);
 

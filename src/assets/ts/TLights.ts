@@ -15,13 +15,13 @@ pointLight.position.set(20,20,20);
 export const spotLight: SpotLight = new SpotLight(
   'rgb(255,255,255)',
   1,
-  200,
+  500,
   Math.PI / 180 * 30,
   0,
   0
 )
 spotLight.castShadow = true;
-spotLight.position.set(0,100,0);
+spotLight.position.set(0,100,400);
 spotLight.target = wall;
 
 lightsList.push(ambientLight,spotLight);

@@ -18,7 +18,7 @@ export default defineComponent({
       TE.addObject(...basicObjectList);
       TE.addObject(...lightsList);
       TE.addObject(...helperList);
-      TE.addObject(...codeModelList);
+      // TE.addObject(...codeModelList);
 
       getFrame().then(frame => {
         frame && TE.addObject(frame);
