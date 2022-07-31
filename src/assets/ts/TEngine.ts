@@ -51,6 +51,23 @@ export class TEngine {
     let transing = false; // 判断此次鼠标事件是否是变换事件
     transformControls.addEventListener('mouseDown', event => {
       transing = true;
+    });
+
+    document.addEventListener('keyup', event => {
+      if (event.key === 'e') {
+        transformControls.mode = "scale"
+        return false
+      }
+
+      if (event.key === 'r') {
+        transformControls.mode = "rotate"
+        return false
+      }
+
+      if (event.key === 't') {
+        transformControls.mode = "translate"
+        return false
+      }
     })
 
     //初始射线发射器
