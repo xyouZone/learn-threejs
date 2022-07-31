@@ -48,6 +48,10 @@ export class TEngine {
     // 初始变换控制器
     const transformControls = new TransformControls(this.camera, renderer.domElement);
     scene.add(transformControls);
+    let transing = false; // 判断此次鼠标事件是否是变换事件
+    transformControls.addEventListener('mouseDown', event => {
+      transing = true;
+    })
 
     //初始射线发射器
     const raycaster = new Raycaster();
@@ -68,6 +72,10 @@ export class TEngine {
     });
 
     renderer.domElement.addEventListener('click',(event) => {
+      if(transing) {
+        transing = false;
+        return false;
+      }
       raycaster.setFromCamera(mouse,this.camera);
       const intersection = raycaster.intersectObjects(scene.children);
       if(intersection.length) {
