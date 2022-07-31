@@ -77,7 +77,10 @@ export class TEngine {
         return false;
       }
       raycaster.setFromCamera(mouse,this.camera);
+      // 移除变换控制器，避免被拾取
+      scene.remove(transformControls);
       const intersection = raycaster.intersectObjects(scene.children);
+      scene.add(transformControls);
       if(intersection.length) {
         const object = intersection[0].object;
         transformControls.attach(object);
