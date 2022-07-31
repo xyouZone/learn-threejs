@@ -5,7 +5,8 @@ import {
   SphereBufferGeometry,
   CylinderBufferGeometry,
   Object3D,
-  PlaneBufferGeometry
+  PlaneBufferGeometry,
+  Color
 } from 'three'
 import { pictureTexture } from './TTextures';
 import { VertexNormalsHelper } from 'three/examples/jsm/helpers/VertexNormalsHelper'
@@ -48,4 +49,12 @@ wall.position.z = -80;
 
 wall.updateMatrix();
 wall.updateMatrixWorld();
+wall.addEventListener('mouseenter', () => {
+  (wall.material as MeshStandardMaterial).color = new Color('red');
+})
+
+wall.addEventListener('mouseleave', () => {
+  (wall.material as MeshStandardMaterial).color = new Color('white');
+})
+
 basicObjectList.push(stage,wall,picture);
