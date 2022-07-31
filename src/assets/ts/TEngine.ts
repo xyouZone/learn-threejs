@@ -1,4 +1,4 @@
-import { AmbientLight, AxesHelper, BoxBufferGeometry, GridHelper, Mesh, MeshStandardMaterial, PerspectiveCamera, Scene, Vector3, WebGLRenderer,MOUSE, Object3D, Vector2, Raycaster,Material, } from "three";
+import { AmbientLight, AxesHelper, BoxBufferGeometry, GridHelper, Mesh, MeshStandardMaterial, PerspectiveCamera, Scene, Vector3, WebGLRenderer,MOUSE, Object3D, Vector2, Raycaster,Material, Group, } from "three";
 import Stats from 'three/examples/jsm/libs/stats.module'
 import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 import { TransformControls } from 'three/examples/jsm/controls/TransformControls'
@@ -118,15 +118,15 @@ export class TEngine {
         return false;
       }
 
-      // // 选取物体的操作
+      // 选取物体的操作
       if (event.intersection.length) {
-        const object = event.intersection[0].object;
+        const object = event.intersection[0].object as Object3D;
         if (object.type === "TransformControlsPlane") {
           transformControls.detach();
           scene.remove(transformControls);
         } else {
           scene.add(transformControls);
-          transformControls.attach(object);
+          transformControls.attach(object.parent instanceof Group ? object.parent : object);
         }
       } else {
         transformControls.detach();

@@ -9,6 +9,7 @@ import { lightsList } from './assets/ts/TLights'
 import { helperList } from './assets/ts/THelper'
 import { codeModelList } from './assets/ts/TCodeModel';
 import { framePromise, getFrame } from './assets/ts/TLoadModel';
+import { groupPromise } from './assets/ts/TGroup';
 
 export default defineComponent({
   setup() {
@@ -20,8 +21,8 @@ export default defineComponent({
       TE.addObject(...helperList);
       // TE.addObject(...codeModelList);
 
-      getFrame().then(frame => {
-        frame && TE.addObject(frame);
+      groupPromise.then(group => {
+        TE.addObject(group);
       })
     })
 
